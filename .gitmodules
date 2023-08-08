@@ -1,3 +1,6 @@
 [submodule "pytorch-image-models"]
 	path = pytorch-image-models
 	url = git@github.com:oetu/pytorch-image-models.git
+[submodule "mae"]
+	path = mae
+	url = git@github.com:oetu/mae.git
