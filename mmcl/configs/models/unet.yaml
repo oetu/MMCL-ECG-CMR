@@ -1,0 +1,12 @@
+# @package _global_
+defaults:
+  - _self_
+
+model: unet
+lr: 3.e-3
+batch_size: 256
+img_size: 210
+embedding_dim: 32
+
+lr_imaging: 3.e-3
+lr_tabular: 3.e-4

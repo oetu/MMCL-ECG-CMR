@@ -1,0 +1,41 @@
+# @package _global_
+defaults:
+ - _self_
+
+target: CAD
+
+num_classes: 2
+weights: [0.55, 10]
+live_loading: False
+delete_segmentation: False
+balanced_accuracy: False
+
+# For the self-supervised pre-training
+data_train_ecg: ecgs_train_ecg_imaging_noBase_gn.pt
+data_val_ecg: ecgs_val_ecg_imaging_noBase_gn.pt
+
+data_train_imaging: images_train_ecg_imaging.pt
+data_val_imaging: images_val_ecg_imaging.pt
+
+# For the online classifier during self-supervised pre-training
+labels_train: labels_train_${target}_all.pt 
+labels_val: labels_val_${target}_all.pt 
+
+# For the downstream task 
+data_train_eval_ecg: ecgs_train_${target}_all_balanced_noBase_gn.pt
+labels_train_eval_ecg: labels_train_${target}_balanced.pt 
+
+data_val_eval_ecg: ecgs_val_${target}_all_balanced_noBase_gn.pt
+labels_val_eval_ecg: labels_val_${target}_balanced.pt 
+
+data_test_eval_ecg: ecgs_test_ecg_imaging_noBase_gn.pt
+labels_test_eval_ecg: labels_test_${target}_all.pt 
+
+data_train_eval_imaging: images_train_${target}_all_balanced.pt
+labels_train_eval_imaging: labels_train_${target}_balanced.pt
+
+data_val_eval_imaging: images_val_${target}_all_balanced.pt
+labels_val_eval_imaging: labels_val_${target}_balanced.pt 
+
+data_test_eval_imaging: images_test_ecg_imaging.pt
+labels_test_eval_imaging: labels_test_${target}_all.pt 

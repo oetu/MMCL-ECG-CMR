@@ -1,0 +1,138 @@
+defaults:
+  - models: resnet50
+  - dataset: cardiac
+  - paths: server_cardiac
+  - augmentations: default
+
+# Command Center
+run_imaging: False
+run_ecg: False
+run_multimodal: False
+run_eval: False
+
+# Multimodal
+weight_decay: 1.e-4
+scheduler: anneal
+anneal_max_epochs: 200
+temperature: 0.1
+projection_dim: 128
+use_projection_head: True
+
+loss: clip
+view: augmented
+lambda_0: 0.5
+momentum: 0.99
+
+train_similarity_matrix:
+val_similarity_matrix: 
+threshold: 0.9
+similarity_divisor: 2
+
+ecg_pretrain_checkpoint:
+pretrained_ecg_strategy: trainable
+load_imagenet_weights: False
+imaging_pretrain_checkpoint:
+pretrained_imaging_strategy: trainable
+
+multiple_lr: False
+
+# Classifier
+classifier_num_layers: 2
+lr_classifier: 3.e-4
+weight_decay_classifier: 1.e-4
+init_strat: kaiming
+
+# Imaging
+augmentation_rate: 0.95
+
+# ECG
+input_channels: 1
+input_electrodes: 12
+time_steps: 2500
+model_size: tiny
+ecg_model: vit_${model_size}_patchX
+patch_height: 1
+patch_width: 100
+drop_path: 0.1
+layer_decay: 0.75 # for the optimizer
+global_pool: True
+attention_pool: False
+
+# logging
+save_embeddings: False
+
+# Online classifier
+online_classifier: "ecg" # either "image" or "ecg"
+
+# Online localization
+upsample_factor_img: 2
+upsample_factor_ecg: 2
+plot_localization: True
+plot_localization_pairwise: False
+use_softmax: False
+temp: 0.6
+
+# Evaluator
+generate_embeddings: False
+keep_projector: False
+eval_train_augment_rate: 0.8
+eval_classifier: linear
+finetune_strategy: frozen
+
+lr_eval: 1.e-3
+weight_decay_eval: 0
+val_check_interval: 1.0
+check_val_every_n_epoch: 1
+
+vec2vec: False
+checkpoint_vec2vec: 
+
+checkpoint:
+datatype:
+
+# General
+seed: 2022
+max_epochs: 300
+warmup_epochs: 30
+task: classification
+log_images: False
+use_wandb: True
+offline: False
+test: False
+test_and_eval: False
+combine_train_and_val: False
+weighted_sampler: False
+watch_weights: False
+
+transform:
+version:
+transform_train:
+transform_val:
+transform_test:
+dataset_length:
+resume_training:
+wandb_id:
+
+labels_train_short:
+labels_val_short:
+data_train_ecg_short:
+data_val_ecg_short:
+data_train_imaging_short:
+data_val_imaging_short:
+field_lengths_ecg_short:
+data_train_eval_ecg_short:
+labels_train_eval_ecg_short:
+data_val_eval_ecg_short:
+labels_val_eval_ecg_short:
+data_test_eval_ecg_short:
+labels_test_eval_ecg_short:
+data_train_eval_imaging_short:
+labels_train_eval_imaging_short:
+data_val_eval_imaging_short:
+labels_val_eval_imaging_short:
+data_test_eval_imaging_short:
+labels_test_eval_imaging_short:
+train_similarity_matrix_short:
+
+patch_size:
+input_size:

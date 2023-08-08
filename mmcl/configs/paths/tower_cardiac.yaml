@@ -1,0 +1,6 @@
+# @package _global_
+defaults:
+  - _self_
+
+data_base: /home/oturgut/sprai/data/preprocessed/ecg/
+num_workers: 32

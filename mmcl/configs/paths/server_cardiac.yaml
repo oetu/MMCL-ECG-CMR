@@ -1,0 +1,6 @@
+# @package _global_
+defaults:
+  - _self_
+
+data_base: /vol/aimspace/projects/ukbb/cardiac/cardiac_segmentations/projects/ecg/
+num_workers: 24
