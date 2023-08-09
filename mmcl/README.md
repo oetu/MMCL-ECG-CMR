@@ -1,3 +1,3 @@
-# MultimodalContrastiveLearning
+# Multimodal Contrastive Learning
 
-ECG
+Exchange information between ECG and cardiac MR imaging.
