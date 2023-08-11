@@ -13,10 +13,10 @@
 # python run.py version=151 run_simclr_ecg=True paths=server_cardiac max_epochs=300 lr=3e-4 temperature=0.1 batch_size=768 embedding_dim=384 projection_dim=128 augmentations=heavy time_steps=2500 attention_pool=False global_pool=True
 
 # # Multimodal ECG Imaging
-# python run.py version=1001 run_multimodal=True paths=server_cardiac save_embeddings=False max_epochs=300 use_softmax=False temp=0.8 lr=1e-4 augmentations=default lambda_0=0.75 embedding_dim=512 projection_dim=128 imaging_pretrain_checkpoint=/vol/aimspace/users/tuo/ECGMultimodalContrastiveLearning/runs/imaging/version_220/checkpoint_best_loss.ckpt attention_pool=False global_pool=True model_size=tiny ecg_pretrain_checkpoint=/vol/aimspace/users/tuo/ECGMultimodalContrastiveLearning/pretrained_checkpoints/tiny/v1/checkpoint-399.pth
+python run.py version=666 run_multimodal=True paths=tower_cardiac save_embeddings=False max_epochs=300 use_softmax=False temp=0.8 lr=1e-4 augmentations=default lambda_0=0.75 embedding_dim=512 projection_dim=128 imaging_pretrain_checkpoint=/home/oturgut/MMCL-ECG-CMR/model_weights/image_encoder_simclr.pth attention_pool=False global_pool=True model_size=tiny ecg_pretrain_checkpoint=/home/oturgut/MMCL-ECG-CMR/model_weights/signal_encoder_mdm.pth
 
 # BYOL ECG
-python run.py version=401 run_ecg=True loss=byol model=vit paths=tower_cardiac save_embeddings=False max_epochs=300 use_softmax=False temp=0.8 lr=3e-5 augmentations=default attention_pool=False global_pool=True model_size=tiny 
+# python run.py version=401 run_ecg=True loss=byol model=vit paths=tower_cardiac save_embeddings=False max_epochs=300 use_softmax=False temp=0.8 lr=3e-5 augmentations=default attention_pool=False global_pool=True model_size=tiny 
 
 # python run.py version=420 max_epochs=300 use_softmax=False temp=0.8 lr=1e-4 augmentations=default lambda_0=0.75 embedding_dim=512 projection_dim=128 imaging_pretrain_checkpoint=/vol/aimspace/users/tuo/ECGMultimodalContrastiveLearning/runs/imaging/version_220/checkpoint_best_loss.ckpt attention_pool=False global_pool=True model_size=tiny ecg_pretrain_checkpoint=/vol/aimspace/users/tuo/ECGMultimodalContrastiveLearning/pretrained_checkpoints/tiny/v1/checkpoint-399.pth
 # python run.py version=422 max_epochs=300 use_softmax=False temp=0.8 lr=3e-4 augmentations=default lambda_0=0.75 embedding_dim=512 projection_dim=128 imaging_pretrain_checkpoint=/vol/aimspace/users/tuo/ECGMultimodalContrastiveLearning/runs/imaging/version_220/checkpoint_best_loss.ckpt attention_pool=False global_pool=True model_size=tiny

@@ -103,6 +103,7 @@ class MultimodalSimCLR(pl.LightningModule):
       print(msg)
 
     # Multimodal
+    nclasses = hparams.batch_size
     if self.hparams.loss.lower() == 'remove_fn':
       self.criterion_train = RemoveFNLoss(temperature=self.hparams.temperature, cosine_similarity_matrix_path=self.hparams.train_similarity_matrix, threshold=self.hparams.threshold)
       self.criterion_val = CLIPLoss(temperature=self.hparams.temperature, lambda_0=self.hparams.lambda_0)
@@ -118,6 +119,7 @@ class MultimodalSimCLR(pl.LightningModule):
     elif self.hparams.loss.lower() == 'ntxent':  
       self.criterion_train = NTXentLoss(self.hparams.temperature)
       self.criterion_val = self.criterion_train
+      nclasses = hparams.batch_size*2-1
     else:
       raise ValueError('The only implemented losses currently are CLIP, NTXent, supcon, and remove_fn')
 
@@ -137,18 +139,28 @@ class MultimodalSimCLR(pl.LightningModule):
 
     self.top1_acc_train = torchmetrics.Accuracy(top_k=1)
     self.top1_acc_val = torchmetrics.Accuracy(top_k=1)
+    # self.top1_acc_train = torchmetrics.Accuracy(task="multiclass", top_k=1, num_classes=nclasses)
+    # self.top1_acc_val = torchmetrics.Accuracy(task="multiclass", top_k=1, num_classes=nclasses)
 
     self.top5_acc_train = torchmetrics.Accuracy(top_k=5)
     self.top5_acc_val = torchmetrics.Accuracy(top_k=5)
+    # self.top5_acc_train = torchmetrics.Accuracy(task="multiclass", top_k=5, num_classes=nclasses)
+    # self.top5_acc_val = torchmetrics.Accuracy(task="multiclass", top_k=5, num_classes=nclasses)
 
     self.f1_train = torchmetrics.F1Score(average=None, num_classes=hparams.num_classes)
     self.f1_val = torchmetrics.F1Score(average=None, num_classes=hparams.num_classes)
+    # self.f1_train = torchmetrics.F1Score(task="binary", average=None, num_classes=hparams.num_classes)
+    # self.f1_val = torchmetrics.F1Score(task="binary", average=None, num_classes=hparams.num_classes)
 
     self.classifier_acc_train = torchmetrics.Accuracy(num_classes = self.hparams.num_classes, average = 'weighted')
     self.classifier_acc_val = torchmetrics.Accuracy(num_classes = self.hparams.num_classes, average = 'weighted')
+    # self.classifier_acc_train = torchmetrics.Accuracy(task="binary", num_classes = self.hparams.num_classes, average = 'weighted')
+    # self.classifier_acc_val = torchmetrics.Accuracy(task="binary", num_classes = self.hparams.num_classes, average = 'weighted')
 
     self.classifier_auc_train = torchmetrics.AUROC(num_classes = self.hparams.num_classes)
     self.classifier_auc_val = torchmetrics.AUROC(num_classes = self.hparams.num_classes)
+    # self.classifier_auc_train = torchmetrics.AUROC(task="binary", num_classes = self.hparams.num_classes)
+    # self.classifier_auc_val = torchmetrics.AUROC(task="binary", num_classes = self.hparams.num_classes)
 
     print(f'ECG model, multimodal: {self.encoder_ecg}\n{self.projection_head_ecg}')
     print(f'Imaging model, multimodal: {self.encoder_imaging}\n{self.projection_head_imaging}')
@@ -327,6 +339,8 @@ class MultimodalSimCLR(pl.LightningModule):
       y_hat = self.classifier(embedding)
       loss = self.classifier_criterion(y_hat, y)
 
+      # self.f1_train(torch.argmax(y_hat, dim=1), y)
+      # self.classifier_acc_train(torch.argmax(y_hat, dim=1), y)
       self.f1_train(y_hat, y)
       self.classifier_acc_train(y_hat, y)
       self.classifier_auc_train(y_hat, y)
@@ -371,6 +385,8 @@ class MultimodalSimCLR(pl.LightningModule):
 
     self.f1_val(y_hat, y)
     self.classifier_acc_val(y_hat, y)
+    # self.f1_val(torch.argmax(y_hat, dim=1), y)
+    # self.classifier_acc_val(torch.argmax(y_hat, dim=1), y)
     self.classifier_auc_val(y_hat, y)
 
     self.log('classifier.val.loss', loss, on_epoch=True, on_step=False)
