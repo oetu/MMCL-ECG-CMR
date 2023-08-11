@@ -6,5 +6,5 @@ outputs/
 
 wandb/
 
-mmcl/visualization.ipynb
-mmcl/run.sh
+visualization.ipynb
+run.sh
