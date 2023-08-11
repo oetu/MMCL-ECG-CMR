@@ -5,8 +5,6 @@ runs/
 outputs/
 
 wandb/
-.vscode/
-environments/mmcl_v2.yaml
 
 mmcl/visualization.ipynb
 mmcl/run.sh
