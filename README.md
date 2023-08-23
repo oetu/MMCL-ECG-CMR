@@ -1,10 +1,21 @@
 # Unlocking the Diagnostic Potential of ECG through Knowledge Transfer from Cardiac MRI
 
-This is the official implementation of our paper "Unlocking the Diagnostic Potential of ECG through Knowledge Transfer from Cardiac MRI" (2023).
+This is the official implementation of our paper [Unlocking the Diagnostic Potential of ECG through Knowledge Transfer from Cardiac MRI](https://arxiv.org/abs/2308.05764) (2023). 
 
 <p align="center">
   <img src="./figures/overview.png?raw=true">
 </p>
+
+If you find the code useful, please cite
+
+```
+@article{turgut2023unlocking,
+  title={Unlocking the Diagnostic Potential of ECG through Knowledge Transfer from Cardiac MRI},
+  author={Turgut, {\"O}zg{\"u}n and M{\"u}ller, Philip and Hager, Paul and Shit, Suprosanna and Starck, Sophie and Menten, Martin J and Martens, Eimo and Rueckert, Daniel},
+  journal={arXiv preprint arXiv:2308.05764},
+  year={2023}
+}
+```
 
 ## Instructions
 
