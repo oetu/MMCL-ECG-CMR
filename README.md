@@ -1,25 +1,14 @@
-# Unlocking the Diagnostic Potential of ECG through Knowledge Transfer from Cardiac MRI
+# Unlocking the diagnostic potential of electrocardiograms through information transfer from cardiac magnetic resonance imaging
 
-This is the official implementation of our paper [Unlocking the Diagnostic Potential of ECG through Knowledge Transfer from Cardiac MRI](https://arxiv.org/abs/2308.05764) (2023). 
+This is the official implementation of our work [Unlocking the diagnostic potential of electrocardiograms through information transfer from cardiac magnetic resonance imaging](https://www.sciencedirect.com/science/article/pii/S1361841524003785) (2025). 
 
 <p align="center">
   <img src="./figures/overview.png?raw=true">
 </p>
 
-If you find the code useful, please cite
-
-```
-@article{turgut2023unlocking,
-  title={Unlocking the Diagnostic Potential of ECG through Knowledge Transfer from Cardiac MRI},
-  author={Turgut, {\"O}zg{\"u}n and M{\"u}ller, Philip and Hager, Paul and Shit, Suprosanna and Starck, Sophie and Menten, Martin J and Martens, Eimo and Rueckert, Daniel},
-  journal={arXiv preprint arXiv:2308.05764},
-  year={2023}
-}
-```
-
 ## Instructions
 
-### Masked data modeling
+### Masked data modelling
 
 Install environment using `conda env create --file environments/mae.yaml`. 
 Install [timm](https://github.com/oetu/pytorch-image-models/tree/3dbe2c484b7c5e44097427d5fcb50338df895b31/timm) library using `pip install -e pytorch-image-models`.
@@ -36,3 +25,22 @@ For detailed instructions to run the code for multimodal pre-training, see the [
 Install environment using `conda env create --file environments/mae.yaml`.
 Install [timm](https://github.com/oetu/pytorch-image-models/tree/3dbe2c484b7c5e44097427d5fcb50338df895b31/timm)  library using `pip install -e pytorch-image-models`.
 For detailed instructions to run the code for fine-tuning and inference, see the [FINETUNE.md](https://github.com/oetu/mae/blob/1d75ce98082b99accdedbccd00deb5d3eeab8cdb/FINETUNE.md) of the mae subfolder.
+
+## Citation
+
+Please cite the following work:
+
+```
+@article{turgut2025unlocking,
+  title={Unlocking the diagnostic potential of electrocardiograms through information transfer from cardiac magnetic resonance imaging},
+  author={Turgut, {\"O}zg{\"u}n and M{\"u}ller, Philip and Hager, Paul and Shit, Suprosanna and Starck, Sophie and Menten, Martin J and Martens, Eimo and Rueckert, Daniel},
+  journal={Medical Image Analysis},
+  pages={103451},
+  year={2025},
+  publisher={Elsevier}
+}
+```
+
+## Notice
+
+This project includes third-party software components that are subject to their respective licenses. Detailed information including component names, licenses, and copyright holders is provided in the respective files. Please review the [LICENSE](https://github.com/oetu/MMCL-ECG-CMR/blob/main/LICENSE) file before using or distributing this software.
