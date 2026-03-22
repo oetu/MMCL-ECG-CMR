@@ -7,6 +7,9 @@ This is the official implementation of our work [Unlocking the diagnostic potent
 
 ## Instructions
 
+### Pre-processing
+Pre-process the ECG data using the `utils/preprocessing.py` script 
+
 ### Masked data modelling
 Install environment using `conda env create --file environments/mae.yaml`. 
 Install [timm](https://github.com/oetu/pytorch-image-models/tree/3dbe2c484b7c5e44097427d5fcb50338df895b31/timm) library using `pip install -e pytorch-image-models`.
